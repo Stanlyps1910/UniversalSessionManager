@@ -1,0 +1,15 @@
+{
+  "name": "usm",
+  "version": "1.0.0",
+  "description": "Universal Session Manager — Multi-AI chat with seamless context carry-over",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently --names server,client --prefix-colors blue,magenta \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "install:all": "npm install && cd server && npm install && cd ../client && npm install",
+    "server": "npm run dev --prefix server",
+    "client": "npm run dev --prefix client"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
