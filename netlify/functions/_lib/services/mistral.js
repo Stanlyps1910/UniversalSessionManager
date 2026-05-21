@@ -1,4 +1,4 @@
-import { ProviderError } from '../middleware/errorHandler.js';
+import { ProviderError } from '../errorHandler.js';
 
 export async function sendToMistral(apiKey, model, history, newMessage) {
   try {

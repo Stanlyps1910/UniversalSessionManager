@@ -1,5 +1,5 @@
 import Anthropic from '@anthropic-ai/sdk';
-import { ProviderError } from '../middleware/errorHandler.js';
+import { ProviderError } from '../errorHandler.js';
 
 export async function sendToClaude(apiKey, model, history, newMessage) {
   try {

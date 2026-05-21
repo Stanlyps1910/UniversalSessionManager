@@ -1,5 +1,5 @@
 import { GoogleGenAI } from '@google/genai';
-import { ProviderError } from '../middleware/errorHandler.js';
+import { ProviderError } from '../errorHandler.js';
 
 export async function sendToGemini(apiKey, model, history, newMessage) {
   try {

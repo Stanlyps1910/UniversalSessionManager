@@ -1,5 +1,5 @@
 import OpenAI from 'openai';
-import { ProviderError } from '../middleware/errorHandler.js';
+import { ProviderError } from '../errorHandler.js';
 
 export async function sendToOpenAI(apiKey, model, history, newMessage, baseURL = null) {
   try {
