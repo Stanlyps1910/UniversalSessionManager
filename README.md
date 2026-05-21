@@ -117,7 +117,64 @@ USManager/
 
 ## Privacy
 
-- All data stored locally in SQLite (`server/usm.db`)
-- API keys stored in the local database only
+- All data stored locally in SQLite (`server/usm.db`) during local development
+- When deployed to Netlify, data is stored in Turso (SQLite-compatible cloud database)
+- API keys stored in the local database only (or Turso when deployed)
 - Keys are sent **only** to the respective AI provider's API endpoint
 - No cloud sync, no user accounts, no telemetry
+
+---
+
+## Deploy to Netlify
+
+This project is fully configured for Netlify deployment with serverless functions.
+
+### Prerequisites
+
+1. **Create a free Turso database** (SQLite-compatible, required for persistent data):
+   - Sign up at [turso.tech](https://turso.tech)
+   - Create a database: `turso db create usm`
+   - Get your database URL and auth token:
+     ```bash
+     turso db show usm --url          # Copy this URL
+     turso db tokens create usm       # Copy this token
+     ```
+
+### Deploy Steps
+
+1. **Push your code to GitHub**
+
+2. **Connect to Netlify**:
+   - Go to [app.netlify.com](https://app.netlify.com)
+   - Click "Add new site" → "Import an existing project"
+   - Connect your GitHub repo and select it
+
+3. **Set Environment Variables** (Site settings → Environment variables):
+   - `TURSO_DATABASE_URL` — your Turso database URL
+   - `TURSO_AUTH_TOKEN` — your Turso auth token
+
+4. **Deploy** — Netlify will automatically:
+   - Build the React frontend (Vite)
+   - Install and bundle the serverless functions
+   - Configure `/api/*` redirects to Netlify Functions
+
+### Local Development (unchanged)
+
+```bash
+npm run dev
+```
+
+Both the Express server and Vite dev server run as before. The Netlify functions are only used in production.
+
+### Architecture on Netlify
+
+```
+Netlify Site
+├── Static Files (client/dist/)     → React SPA
+└── Netlify Functions (api.js)      → Serverless API
+    └── Turso Database              → Persistent SQLite-compatible storage
+```
+
+### Function Timeout
+
+The `/api/chat` endpoint has a 120-second timeout configured in `netlify.toml` to handle long AI responses.

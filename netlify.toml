@@ -1,0 +1,21 @@
+[build]
+  base = "client"
+  publish = "dist"
+  command = "cd ../netlify/functions && npm install && cd ../../client && npm run build"
+
+[functions]
+  directory = "../netlify/functions"
+  node_bundler = "esbuild"
+
+[functions.api]
+  timeout = 120
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
