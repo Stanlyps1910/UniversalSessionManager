@@ -2,6 +2,8 @@
 
 > Chat with any AI model. Switch seamlessly. Full context always.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/53b4be4a-b00c-4140-b4a9-c34f942c9561/deploy-status)](https://app.netlify.com/projects/universalsessionmanager/deploys)
+
 USM is a single chat interface that lets you talk to any free-tier AI model — Claude, ChatGPT, Gemini, or Mistral. When one model hits its token/context limit, switch to another model and **the full conversation history carries over automatically**. No summarization. No compression. Full context always.
 
 ---
