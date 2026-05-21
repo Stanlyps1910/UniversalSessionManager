@@ -15,7 +15,7 @@ USM is a single chat interface that lets you talk to any free-tier AI model — 
 - **Smart Model Filtering** — Switch modal only shows models that can fit your full conversation
 - **Session Management** — Create, search, and manage multiple sessions
 - **Privacy First** — All data stored locally, API keys never leave your machine
-- **Dark & Light Themes** — Full theme support with system preference detection
+- **Dark & Light Themes** — Toggle between themes with the button in the top-right corner; preference saved locally
 
 ---
 
@@ -111,6 +111,7 @@ USManager/
 | `Enter` | Send Message |
 | `Shift+Enter` | New Line |
 | `Escape` | Close Modals |
+| `Ctrl+Shift+L` | Toggle Theme |
 
 ---
 
